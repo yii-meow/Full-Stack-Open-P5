@@ -1,24 +1,11 @@
-import Togglable from "./Togglable"
-import BlogService from "../services/blogs"
+import Togglable from './Togglable'
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, user, likePost, removeBlog }) => {
     const blogStyle = {
-        "border": "2px solid black",
-        "paddingTop": 10,
-        "paddingLeft": 2,
-        "marginBottom": 5,
-    }
-
-    const likePost = () => {
-        BlogService
-            .likePost(
-                { ...blog, likes: blog.likes + 1 }
-            )
-    }
-
-    const removeBlog = () => {
-        BlogService
-            .deletePost(blog.id)
+        'border': '2px solid black',
+        'paddingTop': 10,
+        'paddingLeft': 2,
+        'marginBottom': 5,
     }
 
     return (
@@ -27,22 +14,26 @@ const Blog = ({ blog }) => {
                 {blog.title} {blog.author}
 
                 <Togglable buttonLabel='view'>
-                    <div>{blog.url}</div>
+                    <div className='more-details'>
+                        <div>{blog.url}</div>
 
-                    likes {blog.likes}
-                    <button
-                        onClick={likePost}
-                    >
-                        like
-                    </button>
-                    <br />
+                        likes {blog.likes}
+                        <button
+                            onClick={() => likePost(blog)}
+                        >
+                            like
+                        </button>
+                        <br />
 
-                    {blog.user && blog.user.username}
+                        {blog.user.username}
 
-                    <button
-                        onClick={removeBlog}>
-                        remove
-                    </button>
+                        {user && blog.user.username === user.username &&
+                            <button
+                                onClick={() => removeBlog(blog)}>
+                                remove
+                            </button>
+                        }
+                    </div>
                 </Togglable>
             </div>
         </div >

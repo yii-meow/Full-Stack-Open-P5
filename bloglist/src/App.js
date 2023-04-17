@@ -10,8 +10,8 @@ import LoginForm from './components/LoginForm'
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [notification, setNotification] = useState({
-    message: "",
-    type: ""
+    message: '',
+    type: ''
   })
 
   const [username, setUsername] = useState('')
@@ -26,7 +26,7 @@ const App = () => {
       setUser(user)
       blogService.setToken(user.token)
     }
-  }, []);
+  }, [])
 
   // Fetch the blogs in database when rendering on the first time
   useEffect(() => {
@@ -55,15 +55,15 @@ const App = () => {
       setPassword('')
     } catch (e) {
       setNotification({
-        message: "wrong username or password",
-        type: "error"
+        message: 'wrong username or password',
+        type: 'error'
       })
       setTimeout(() => {
         setNotification({
-          message: "",
-          type: ""
+          message: '',
+          type: ''
         })
-      }, 5000);
+      }, 5000)
     }
   }
 
@@ -89,7 +89,11 @@ const App = () => {
 
       {
         blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} />
+          <Blog key={blog.id}
+            blog={blog}
+            user={user}
+            likePost={likePost}
+            removeBlog={removeBlog} />
         )
       }
     </div>
@@ -109,9 +113,25 @@ const App = () => {
       })
   }
 
+  const likePost = async blog => {
+    blogService
+      .likePost(
+        { ...blog, likes: blog.likes + 1 }
+      )
+
+    setBlogs(await blogService.getAll())
+  }
+
+  const removeBlog = (blog) => {
+    if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
+      blogService
+        .deletePost(blog.id)
+    }
+  }
+
   return (
     <div>
-      {notification.message !== "" && <Notification notification={notification} />}
+      {notification.message !== '' && <Notification notification={notification} />}
 
       {!user &&
         <Togglable buttonLabel="Login">

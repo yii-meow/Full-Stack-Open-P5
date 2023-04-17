@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 const BlogForm = ({ createBlog, setNotification }) => {
     const [title, setTitle] = useState('')
@@ -14,17 +14,17 @@ const BlogForm = ({ createBlog, setNotification }) => {
             url
         })
 
-        setNotification({
-            message: `a new blog ${title} by ${author} added`,
-            type: "success"
-        })
+        // setNotification({
+        //     message: `a new blog ${title} by ${author} added`,
+        //     type: 'success'
+        // })
 
         setTimeout(() => {
             setNotification({
-                message: "",
-                type: ""
+                message: '',
+                type: ''
             })
-        }, 5000);
+        }, 5000)
 
         setTitle('')
         setAuthor('')
@@ -38,6 +38,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
                 <input
                     type='text'
                     value={title}
+                    placeholder='write title'
                     onChange={({ target }) => setTitle(target.value)}>
                 </input>
                 <br />
@@ -46,6 +47,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
                 <input
                     type='text'
                     value={author}
+                    placeholder='write author'
                     onChange={({ target }) => setAuthor(target.value)}>
                 </input>
                 <br />
@@ -54,6 +56,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
                 <input
                     type='text'
                     value={url}
+                    placeholder='write url'
                     onChange={({ target }) => setUrl(target.value)}>
                 </input>
                 <br />

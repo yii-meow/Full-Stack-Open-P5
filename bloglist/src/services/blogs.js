@@ -31,5 +31,4 @@ const deletePost = async blogId => {
         .delete(`${baseUrl}/${blogId}`, config)
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default { setToken, getAll, create, likePost, deletePost }
