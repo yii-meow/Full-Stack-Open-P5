@@ -7,7 +7,8 @@
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "NODE_ENV=test jest --verbose",
-    "build:ui": "rm -rf build && cd ../bloglist && npm run build && cp -r build ../bloglist_backend"
+    "build:ui": "rm -rf build && cd ../bloglist && npm run build && cp -r build ../bloglist_backend",
+    "start:test": "NODE_ENV=test node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -30,5 +31,6 @@
   "jest": {
     "testEnvironment": "node",
     "globalTeardown": "./tests/teardown.js"
-  }
+  },
+  "proxy": "http://localhost:3003"
 }

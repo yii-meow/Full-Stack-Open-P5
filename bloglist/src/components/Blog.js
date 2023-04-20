@@ -11,7 +11,7 @@ const Blog = ({ blog, user, likePost, removeBlog }) => {
     return (
         <div>
             <div style={blogStyle}>
-                {blog.title} {blog.author}
+                <span>{blog.title} {blog.author}</span>
 
                 <Togglable buttonLabel='view'>
                     <div className='more-details'>
@@ -19,6 +19,7 @@ const Blog = ({ blog, user, likePost, removeBlog }) => {
 
                         likes {blog.likes}
                         <button
+                            id='like-button'
                             onClick={() => likePost(blog)}
                         >
                             like
@@ -29,6 +30,7 @@ const Blog = ({ blog, user, likePost, removeBlog }) => {
 
                         {user && blog.user.username === user.username &&
                             <button
+                                id='remove-button'
                                 onClick={() => removeBlog(blog)}>
                                 remove
                             </button>

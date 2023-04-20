@@ -36,6 +36,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
             <form onSubmit={addBlog}>
                 title:
                 <input
+                    id='title'
                     type='text'
                     value={title}
                     placeholder='write title'
@@ -45,6 +46,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
 
                 author:
                 <input
+                    id='author'
                     type='text'
                     value={author}
                     placeholder='write author'
@@ -54,6 +56,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
 
                 url:
                 <input
+                    id='url'
                     type='text'
                     value={url}
                     placeholder='write url'
@@ -61,7 +64,7 @@ const BlogForm = ({ createBlog, setNotification }) => {
                 </input>
                 <br />
 
-                <button type='submit'>Create</button>
+                <button id='create-button' type='submit'>Create</button>
             </form>
         </div>
     )

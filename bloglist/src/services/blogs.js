@@ -27,6 +27,7 @@ const likePost = async blog => {
 }
 
 const deletePost = async blogId => {
+    console.log(blogId, '123')
     await axios
         .delete(`${baseUrl}/${blogId}`, config)
 }

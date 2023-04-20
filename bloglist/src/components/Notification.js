@@ -20,9 +20,10 @@ const Notification = ({ notification }) => {
     }
 
     return (
-        <div style={notification.type === 'success'
-            ? successStyle
-            : failureStyle}>
+        <div className='error'
+            style={notification.type === 'success'
+                ? successStyle
+                : failureStyle}>
             {notification.message}
         </div>
     )

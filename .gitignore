@@ -24,3 +24,5 @@ bloglist/yarn-error.log*
 
 bloglist_backend/node_modules
 bloglist_backend/.env
+
+bloglist/cypress/videos
